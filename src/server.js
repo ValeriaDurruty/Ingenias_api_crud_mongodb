@@ -71,6 +71,7 @@ app.post('/productos', async (req, res) => {
     })
     .catch((error) => {
         console.error(error);
+        res.status(500).send('Error al agregar producto');
     })
     .finally(() => {
         disconnectToMongoDB();
@@ -87,30 +88,25 @@ app.delete('/productos/:id', async (req, res) => {
 
     const client = await connectToMongoDB();
     if (!client) {
-        res.status(500).send('Error al conectarse a MongoDB');
-        return;
+        return res.status(500).send('Error al conectarse a MongoDB');
     }
 
-    client.connect()
-    .then(() => {
+    try {
         const collection = client.db('supermercado').collection('supermercado');
-        return collection.deleteOne({ _id: new ObjectId(productoId) });
-    })
-    .then((result) => {
+        const result = await collection.deleteOne({ _id: new ObjectId(productoId) });
+
         if (result.deletedCount === 0) {
-            res.status(404).send(`No se encontró el producto con el ID proporcionado: ${productoId}`);
-        } else {
-            console.log('Producto eliminado correctamente');
-            res.status(204).send();
+            return res.status(404).send(`No se encontró el producto con el ID proporcionado: ${productoId}`);
         }
-    })
-    .catch((error) => {
+
+        console.log('Producto eliminado correctamente');
+        res.status(204).send();
+    } catch (error) {
         console.error(error);
         res.status(500).send('Se produjo un error al intentar eliminar el producto');
-    })
-    .finally(() => {
+    } finally {
         disconnectToMongoDB();
-    });
+    }
 })
 
 app.use((req, res) => {
