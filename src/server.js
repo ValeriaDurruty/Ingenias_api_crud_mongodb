@@ -26,6 +26,7 @@ app.get("/productos", async (req, res) => {
   const db = client.db("supermercado");
   const productos = await db.collection("supermercado").find().toArray();
   res.json(productos);
+  await disconnectToMongoDB();
 });
 
 app.use((req, res) => {
