@@ -3,7 +3,8 @@
 ## 📋 Sumario
 
 - [🌐 Desarrollo de API RESTful utilizando MongoDB](#-desarrollo-de-api-restful-utilizando-mongodb)
-  - [� Sumario](#-sumario)
+  - [📋 Sumario](#-sumario)
+    - [Integrantes del proyecto](#integrantes-del-proyecto)
   - [📦 Introducción](#-introducción)
   - [🛠️ Configuración](#️-configuración)
   - [📁 Ejemplo `.env`](#-ejemplo-env)
@@ -12,12 +13,22 @@
     - [📥 GET /productos](#-get-productos)
     - [➕ POST /productos](#-post-productos)
     - [🗑️ DELETE /productos/:codigo](#️-delete-productoscodigo)
+  - [✨💻💡 Integrantes del Grupo](#-integrantes-del-grupo)
+
+### Integrantes del proyecto
+
+- [✨💻💡Integrantes del Grupo](#integrantes-del-grupo)
 
 ---
 
 ## 📦 Introducción
 
-Esta API permite realizar operaciones CRUD sobre productos de supermercado almacenados en una base de datos MongoDB.  
+• API RESTful:
+Permite la interacción mediante operaciones CRUD con los contenidos de la base de datos "Supermercado", utilizando endpoints bien definidos.
+
+• Gestión de Base de Datos:
+Integración con bases de datos no relacionales para cubrir diversos requerimientos de almacenamiento.
+
 La URL base es:
 
 ```
@@ -82,7 +93,7 @@ http://localhost:3006/productos
 
 ---
 
-👩‍💻 Integrantes del Grupo
+## ✨💻💡 Integrantes del Grupo
 
         • Mariana Jobse
 
@@ -91,13 +102,3 @@ http://localhost:3006/productos
         • Miriam Cabrera
 
 Somos el Grupo 4, comprometidas con un trabajo colaborativo y de alta calidad.
-
----
-
-🔍 Funcionalidades Principales
-
-• API RESTful:
-Permite la interacción con los contenidos de la base de datos "Supermercado" mediante endpoints bien definidos.
-
-• Gestión de Base de Datos:
-Integración con bases de datos no relacionales para cubrir diversos requerimientos de almacenamiento.
