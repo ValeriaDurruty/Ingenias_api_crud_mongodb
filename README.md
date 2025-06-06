@@ -3,7 +3,6 @@
 ## 📋 Sumario
 
 - [🌐 Desarrollo de API RESTful utilizando MongoDB](#-desarrollo-de-api-restful-utilizando-mongodb)
-  - [📋 Sumario](#-sumario)
   - [📦 Introducción](#-introducción)
   - [🛠️ Configuración](#️-configuración)
   - [📁 Ejemplo `.env`](#-ejemplo-env)
