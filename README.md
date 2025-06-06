@@ -1,28 +1,32 @@
-# Desarrollo de API RESTful utilizando MongoDB como base de datos- Temática: Productos de Supermercado
+# 🌐 Desarrollo de API RESTful utilizando MongoDB
 
-## Sumario
+## 📋 Sumario
 
-- [Desarrollo de API RESTful utilizando MongoDB como base de datos- Temática: Productos de Supermercado](#desarrollo-de-api-restful-utilizando-mongodb-como-base-de-datos--temática-productos-de-supermercado)
-  - [Sumario](#sumario)
-  - [Introducción](#introducción)
-  - [Configuración](#configuración)
-  - [Ejemplo `.env`](#ejemplo-env)
-  - [Endpoints](#endpoints)
+- [🌐 Desarrollo de API RESTful utilizando MongoDB](#-desarrollo-de-api-restful-utilizando-mongodb)
+  - [📋 Sumario](#-sumario)
+  - [📦 Introducción](#-introducción)
+  - [🛠️ Configuración](#️-configuración)
+  - [📁 Ejemplo `.env`](#-ejemplo-env)
+  - [🔗 Endpoints](#-endpoints)
   - [Ejemplos de uso de los métodos HTTP](#ejemplos-de-uso-de-los-métodos-http)
-    - [GET /productos](#get-productos)
-    - [POST /productos](#post-productos)
-    - [DELETE /productos/:codigo](#delete-productoscodigo)
+    - [📥 GET /productos](#-get-productos)
+    - [➕ POST /productos](#-post-productos)
+    - [🗑️ DELETE /productos/:codigo](#️-delete-productoscodigo)
 
-## Introducción
+---
 
-Esta API permite realizar operaciones CRUD sobre productos de supermercado almacenadas en una base de datos MongoDB.  
+## 📦 Introducción
+
+Esta API permite realizar operaciones CRUD sobre productos de supermercado almacenados en una base de datos MongoDB.  
 La URL base es:
 
 ```
 http://localhost:3006
 ```
 
-## Configuración
+---
+
+## 🛠️ Configuración
 
 Para ejecutar el proyecto localmente:
 
@@ -30,14 +34,18 @@ Para ejecutar el proyecto localmente:
 2. Instalá las dependencias con `npm install`
 3. Definí el archivo `.env` con los siguientes datos:
 
-## Ejemplo `.env`
+---
+
+## 📁 Ejemplo `.env`
 
 ```env
 PORT=3006
 MONGODB_URLSTRING=mongodb+srv://jobsemarr:supermercado@supermercado.e2pucdi.mongodb.net/?retryWrites=true&w=majority&appName=supermercado
 ```
 
-## Endpoints
+---
+
+## 🔗 Endpoints
 
 | Método | Ruta               | Descripción                    |
 | ------ | ------------------ | ------------------------------ |
@@ -45,15 +53,17 @@ MONGODB_URLSTRING=mongodb+srv://jobsemarr:supermercado@supermercado.e2pucdi.mong
 | POST   | /productos         | Agrega un nuevo producto       |
 | DELETE | /productos/:codigo | Elimina un producto por código |
 
+---
+
 ## Ejemplos de uso de los métodos HTTP
 
-### GET /productos
+### 📥 GET /productos
 
 ```
 http://localhost:3006/productos
 ```
 
-### POST /productos
+### ➕ POST /productos
 
     http://localhost:3006/productos
 
@@ -66,6 +76,6 @@ http://localhost:3006/productos
 }
 ```
 
-### DELETE /productos/:codigo
+### 🗑️ DELETE /productos/:codigo
 
     http://localhost:3006/productos/1234
