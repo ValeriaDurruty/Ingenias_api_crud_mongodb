@@ -4,8 +4,7 @@
 
 - [🌐 Desarrollo de API RESTful utilizando MongoDB](#-desarrollo-de-api-restful-utilizando-mongodb)
   - [📋 Sumario](#-sumario)
-    - [Integrantes del proyecto](#integrantes-del-proyecto)
-  - [📦 Introducción](#-introducción)
+  - [📦 Principales funcionalidades:](#-principales-funcionalidades)
   - [🛠️ Configuración](#️-configuración)
   - [📁 Ejemplo `.env`](#-ejemplo-env)
   - [🔗 Endpoints](#-endpoints)
@@ -15,13 +14,9 @@
     - [🗑️ DELETE /productos/:codigo](#️-delete-productoscodigo)
   - [✨💻💡 Integrantes del Grupo](#-integrantes-del-grupo)
 
-### Integrantes del proyecto
-
-- [✨💻💡Integrantes del Grupo](#integrantes-del-grupo)
-
 ---
 
-## 📦 Introducción
+## 📦 Principales funcionalidades:
 
 • API RESTful:
 Permite la interacción mediante operaciones CRUD con los contenidos de la base de datos "Supermercado", utilizando endpoints bien definidos.
