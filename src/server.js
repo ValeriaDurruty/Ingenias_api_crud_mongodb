@@ -96,11 +96,12 @@ app.delete('/productos/:id', async (req, res) => {
         const result = await collection.deleteOne({ _id: new ObjectId(productoId) });
 
         if (result.deletedCount === 0) {
-            return res.status(404).send(`No se encontró el producto con el ID proporcionado: ${productoId}`);
+            res.status(404).send(`No se encontró el producto con el ID proporcionado: ${productoId}`);
+        } else {
+            console.log('Producto eliminado correctamente');
+            res.status(204).send();
         }
-
-        console.log('Producto eliminado correctamente');
-        res.status(204).send();
+        
     } catch (error) {
         console.error(error);
         res.status(500).send('Se produjo un error al intentar eliminar el producto');
