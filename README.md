@@ -79,3 +79,25 @@ http://localhost:3006/productos
 ### 🗑️ DELETE /productos/:codigo
 
     http://localhost:3006/productos/1234
+
+---
+
+👩‍💻 Integrantes del Grupo
+
+        • Mariana Jobse
+
+        • Valeria Durruty
+
+        • Miriam Cabrera
+
+Somos el Grupo 4, comprometidas con un trabajo colaborativo y de alta calidad.
+
+---
+
+🔍 Funcionalidades Principales
+
+• API RESTful:
+Permite la interacción con los contenidos de la base de datos "Supermercado" mediante endpoints bien definidos.
+
+• Gestión de Base de Datos:
+Integración con bases de datos no relacionales para cubrir diversos requerimientos de almacenamiento.
