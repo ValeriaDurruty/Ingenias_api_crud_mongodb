@@ -7,11 +7,11 @@ Desarrollado con **Express.js** y **MongoDB**.
 
 ## 📋 Sumario
 
-- [📦 Principales funcionalidades:](#-principales-funcionalidades)
+- [📦 Principales funcionalidades](#-principales-funcionalidades)
 - [🛠️ Configuración del proyecto](#️-configuración-del-proyecto)
 - [📁 Ejemplo `.env`](#-ejemplo-env)
 - [🔗 Endpoints](#-endpoints)
-- [💡 Ejemplos de uso de los métodos HTTP](#-ejemplos-de-uso-de-los-metodos-http)
+- [💡 Ejemplos de uso](#-ejemplos-de-uso)
   - [🔍 GET /productos]
   - [➕ POST /productos]
   - [📝 PUT /productos/:codigo]
@@ -75,7 +75,7 @@ MONGODB_URLSTRING=mongodb+srv://jobsemarr:supermercado@supermercado.e2pucdi.mong
 
 ---
 
-## 💡 Ejemplos de uso de los métodos HTTP
+## 💡 Ejemplos de uso
 
 ### 🔍 GET `/productos`
 
