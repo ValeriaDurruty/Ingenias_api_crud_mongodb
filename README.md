@@ -12,10 +12,7 @@ Desarrollado con **Express.js** y **MongoDB**.
 - [📁 Ejemplo `.env`](#-ejemplo-env)
 - [🔗 Endpoints](#-endpoints)
 - [💡 Ejemplos de uso](#-ejemplos-de-uso)
-  - [🔍 GET /productos]
-  - [➕ POST /productos]
-  - [📝 PUT /productos/:codigo]
-  - [🗑️ DELETE /productos/:id]
+- [🗺️ Diagrama de flujo API RESTful](#-diagrama-de-flujo-api-restful)
 - [✨👩‍💻 Integrantes del grupo](#-integrantes-del-grupo)
 
 ---
@@ -131,6 +128,12 @@ PUT http://localhost:3006/productos/1234
 ```
 DELETE http://localhost:3006/productos/684217f5a9bd0848b715f402
 ```
+
+---
+
+## 🗺️ Diagrama de flujo API RESTful
+
+![Diagrama de flujo de API](./src/img/Diagrama%20de%20flujo%20API%20RESTful.png)
 
 ---
 
