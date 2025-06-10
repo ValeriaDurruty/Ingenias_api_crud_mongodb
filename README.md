@@ -1,44 +1,57 @@
 # 🌐 Desarrollo de API RESTful utilizando MongoDB
 
-## 📋 Sumario
-
-- [🌐 Desarrollo de API RESTful utilizando MongoDB](#-desarrollo-de-api-restful-utilizando-mongodb)
-  - [📋 Sumario](#-sumario)
-  - [📦 Principales funcionalidades:](#-principales-funcionalidades)
-  - [🛠️ Configuración](#️-configuración)
-  - [📁 Ejemplo `.env`](#-ejemplo-env)
-  - [🔗 Endpoints](#-endpoints)
-  - [Ejemplos de uso de los métodos HTTP](#ejemplos-de-uso-de-los-métodos-http)
-    - [📥 GET /productos](#-get-productos)
-    - [➕ POST /productos](#-post-productos)
-    - [🗑️ DELETE /productos/:codigo](#️-delete-productoscodigo)
-  - [✨💻💡 Integrantes del Grupo](#-integrantes-del-grupo)
+Esta API permite gestionar productos de un supermercado utilizando una base de datos MongoDB. Ofrece endpoints para realizar operaciones CRUD (crear, leer, actualizar y eliminar productos).
+Desarrollado con **Express.js** y **MongoDB**.
 
 ---
 
-## 📦 Principales funcionalidades:
+## 📋 Sumario
 
-• API RESTful:
-Permite la interacción mediante operaciones CRUD con los contenidos de la base de datos "Supermercado", utilizando endpoints bien definidos.
+- [📦 Principales funcionalidades:](#-principales-funcionalidades)
+- [🛠️ Configuración del proyecto](#️-configuración-del-proyecto)
+- [📁 Ejemplo `.env`](#-ejemplo-env)
+- [🔗 Endpoints](#-endpoints)
+- [💡 Ejemplos de uso de los métodos HTTP](#-ejemplos-de-uso-de-los-metodos-http)
+  - [🔍 GET /productos]
+  - [➕ POST /productos]
+  - [📝 PUT /productos/:codigo]
+  - [🗑️ DELETE /productos/:id]
+- [✨👩‍💻 Integrantes del grupo](#-integrantes-del-grupo)
 
-• Gestión de Base de Datos:
-Integración con bases de datos no relacionales para cubrir diversos requerimientos de almacenamiento.
+---
 
-La URL base es:
+## 🌍 URL base
 
+La URL base para hacer las peticiones a la API es:
 ```
 http://localhost:3006
 ```
 
 ---
 
-## 🛠️ Configuración
+## 📦 Principales funcionalidades:
+
+- **API RESTful**: Permite la interacción mediante operaciones CRUD con la base de datos `supermercado`, utilizando endpoints bien definidos.
+
+- **Gestión de Base de Datos**: Integración con bases de datos no relacionales para el almacenamiento de productos.
+
+- **Validación y Manejo de Errores**: Verificaciones básicas de datos y mensajes adecuados de error.
+
+---
+
+## 🛠️ Configuración del proyecto
 
 Para ejecutar el proyecto localmente:
 
-1. Cloná este repositorio `git clone https://github.com/ValeriaDurruty/Ingenias_api_crud_mongodb.git`
-2. Instalá las dependencias con `npm install`
-3. Definí el archivo `.env` con los siguientes datos:
+1. Cloná este repositorio:
+   ```bash
+   git clone https://github.com/ValeriaDurruty/Ingenias_api_crud_mongodb.git
+   ```
+2. Instalá las dependencias:
+   ```bash
+   npm install
+   ```
+3. Creá un archivo `.env` en la raíz del proyecto con los siguientes datos:
 
 ---
 
@@ -53,47 +66,80 @@ MONGODB_URLSTRING=mongodb+srv://jobsemarr:supermercado@supermercado.e2pucdi.mong
 
 ## 🔗 Endpoints
 
-| Método | Ruta               | Descripción                    |
-| ------ | ------------------ | ------------------------------ |
-| GET    | /productos         | Lista todos los productos      |
-| POST   | /productos         | Agrega un nuevo producto       |
-| DELETE | /productos/:codigo | Elimina un producto por código |
+| Método | Ruta               | Descripción                      |
+| ------ | ------------------ | ------------------------------   |
+| GET    | /productos         | Lista todos los productos        |
+| POST   | /productos         | Agrega un nuevo producto         |
+| PUT    | /productos/:codigo | Actualiza un producto por código |
+| DELETE | /productos/:id     | Elimina un producto por id       |
 
 ---
 
-## Ejemplos de uso de los métodos HTTP
+## 💡 Ejemplos de uso de los métodos HTTP
 
-### 📥 GET /productos
+### 🔍 GET `/productos`
 
+**Request:**
 ```
-http://localhost:3006/productos
+GET http://localhost:3006/productos
 ```
 
-### ➕ POST /productos
+---
 
-    http://localhost:3006/productos
+### ➕ POST `/productos`
 
-```javascript
- {
-    "codigo": 1,
-    "nombre": "Papas Fritas",
-    "precio": 2,
-    "categoria": "Comestible"
+**Request:**
+```
+POST http://localhost:3006/productos
+```
+
+**Body:**
+
+```json
+{
+  "codigo": 1234,
+  "nombre": "Papas Fritas",
+  "precio": 22,
+  "categoria": "Comestible"
 }
 ```
 
-### 🗑️ DELETE /productos/:codigo
+---
 
-    http://localhost:3006/productos/1234
+### 📝 PUT `/productos/:codigo`
+
+**Request:**
+```
+PUT http://localhost:3006/productos/1234
+```
+
+**Body:**
+
+```json
+{
+  "nombre": "Arroz Integral",
+  "precio": 6.50,
+  "categoria": "Comestible"
+}
+```
 
 ---
 
-## ✨💻💡 Integrantes del Grupo
+### 🗑️ DELETE `/productos/:id`
+
+**Request:**
+```
+DELETE http://localhost:3006/productos/684217f5a9bd0848b715f402
+```
+
+---
+
+## ✨👩‍💻 Integrantes del grupo
 
         • Mariana Jobse
-
         • Valeria Durruty
-
         • Miriam Cabrera
 
-Somos el Grupo 4, comprometidas con un trabajo colaborativo y de alta calidad.
+Somos el **Grupo 4**, comprometidas con un trabajo colaborativo y de alta calidad.
+
+---
