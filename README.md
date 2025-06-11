@@ -7,6 +7,7 @@ Desarrollado con **Express.js** y **MongoDB**.
 
 ## 📋 Sumario
 
+- [🌍 URL base](#-url-base)
 - [📦 Principales funcionalidades](#-principales-funcionalidades)
 - [🛠️ Configuración del proyecto](#️-configuración-del-proyecto)
 - [📁 Ejemplo `.env`](#-ejemplo-env)
@@ -26,7 +27,7 @@ http://localhost:3006
 
 ---
 
-## 📦 Principales funcionalidades:
+## 📦 Principales funcionalidades
 
 - **API RESTful**: Permite la interacción mediante operaciones CRUD con la base de datos `supermercado`, utilizando endpoints bien definidos.
 
@@ -81,6 +82,25 @@ MONGODB_URLSTRING=mongodb+srv://jobsemarr:supermercado@supermercado.e2pucdi.mong
 GET http://localhost:3006/productos
 ```
 
+**Parámetros**: No requiere.
+
+**Respuesta:**
+- `200 OK`: Lista de productos.
+- `500 Internal Server Error`: Error al conectarse a la base de datos.
+
+```json
+[
+  {
+    "_id": "684217f5a9bd0848b715f400",
+    "codigo": 2456,
+    "nombre": "Café",
+    "precio": 9.99,
+    "categoria": "Infusiones"
+  },
+  ...
+]
+```
+
 ---
 
 ### ➕ POST `/productos`
@@ -90,11 +110,35 @@ GET http://localhost:3006/productos
 POST http://localhost:3006/productos
 ```
 
-**Body:**
+**Parámetros**: No requiere.
+
+**Body (JSON) obligatorio:**
+
+| Campo      | Tipo     | Descripción                   | Requerido |
+|------------|----------|-------------------------------|-----------|
+| `codigo`   | Número   | Código del producto           | Sí        |
+| `nombre`   | String   | Nombre del producto           | Sí        |
+| `precio`   | Número   | Precio unitario               | Sí        |
+| `categoria`| String   | Categoría del producto        | Sí        |
 
 ```json
 {
-  "codigo": 1234,
+  "codigo": 8597,
+  "nombre": "Papas Fritas",
+  "precio": 22,
+  "categoria": "Comestible"
+}
+```
+
+**Respuesta:**
+- `201 Created`: Producto creado exitosamente.
+- `400 Bad Request`: Datos inválidos o incompletos.
+- `500 Internal Server Error`: Error al guardar el producto.
+
+```json
+{
+  "_id": "68422abc1234def56789gh01",
+  "codigo": 8597,
   "nombre": "Papas Fritas",
   "precio": 22,
   "categoria": "Comestible"
@@ -110,10 +154,35 @@ POST http://localhost:3006/productos
 PUT http://localhost:3006/productos/1234
 ```
 
-**Body:**
+**Parámetros**: `codigo` (Número) — código del producto a modificar.
+Nota: el codigo no puede ser modificado mediante esta ruta.
+
+**Body (JSON):** campos a actualizar (al menos uno).
+
+| Campo      | Tipo     | Descripción                   | Requerido |
+|------------|----------|-------------------------------|-----------|
+| `nombre`   | String   | Nuevo nombre del producto     | No        |
+| `precio`   | Número   | Nuevo precio                  | No        |
+| `categoria`| String   | Nueva categoría               | No        |
 
 ```json
 {
+  "nombre": "Arroz Integral",
+  "precio": 6.50,
+  "categoria": "Comestible"
+}
+```
+
+**Respuesta:**
+- `200 OK`: Producto actualizado correctamente.
+- `400 Bad Request`: Código mal formado o datos inválidos.
+- `404 Not Found`: Producto con ese código no encontrado.
+- `500 Internal Server Error`: Error al actualizar.
+
+```json
+{
+  "_id": "684217f5a9bd0848b715f3fd",
+  "codigo": 1234,
   "nombre": "Arroz Integral",
   "precio": 6.50,
   "categoria": "Comestible"
@@ -128,6 +197,14 @@ PUT http://localhost:3006/productos/1234
 ```
 DELETE http://localhost:3006/productos/684217f5a9bd0848b715f402
 ```
+
+**Parámetros**: `id` (string) — _ObjectId_ de MongoDB del producto a eliminar.
+
+**Respuesta:**
+- `204 No Content`: Producto eliminado exitosamente.
+- `400 Bad Request`: ID inválido o mal formateado.
+- `404 Not Found`: No se encontró el producto con ese ID.
+- `500 Internal Server Error`: Error al intentar eliminar.
 
 ---
 
