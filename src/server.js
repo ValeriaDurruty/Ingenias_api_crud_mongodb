@@ -88,7 +88,7 @@ app.post("/productos", async (req, res) => {
 
 //http://localhost:3006/productos/1234
 // A partir del código, busca el producto y lo modifica.
-// Modifica todos los campos menos _ID, y permite agregar campos
+// Modifica todos los campos menos _ID. No permite agregar campos nuevos
 app.put("/productos/:codigo", async (req, res) => {
   const codigo_buscado = parseInt(req.params.codigo);
   if (typeof codigo_buscado !== "number" || isNaN(codigo_buscado)) {
@@ -97,12 +97,15 @@ app.put("/productos/:codigo", async (req, res) => {
       .send("El código ingresado: " + req.params.codigo + ", es inválido");
   }
 
-  const dato_nuevo = req.body;
+  const { codigo, nombre, precio, categoria } = req.body;
 
-  if (dato_nuevo == undefined) {
-    // creo que nunca da undefined, porque si no pones nada, te sale un {} y no modifica nada
-    res.status(404).send("Error en el formato de datos a crear");
-    return;
+  if (
+    codigo === undefined ||
+    nombre === undefined ||
+    precio === undefined ||
+    categoria === undefined
+  ) {
+    return res.status(400).send("Faltan campos requeridos");
   }
   const client = await connectToMongoDB();
   if (!client) {
@@ -111,11 +114,14 @@ app.put("/productos/:codigo", async (req, res) => {
   }
   const collection = client.db("supermercado").collection("supermercado");
   // modificacion con control de operación
-  collection
-    .updateOne({ codigo: codigo_buscado }, { $set: dato_nuevo })
+  await collection
+    .updateOne(
+      { codigo: codigo_buscado },
+      { $set: { codigo, nombre, precio, categoria } }
+    )
     .then(() => {
-      console.log("Producto modificado: ", dato_nuevo);
-      res.status(200).send(dato_nuevo);
+      console.log("Producto modificado: ");
+      res.status(200).send();
       return;
     })
     .catch((error) => {
