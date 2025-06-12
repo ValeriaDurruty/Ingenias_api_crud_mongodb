@@ -7,20 +7,27 @@ Desarrollado con **Express.js** y **MongoDB**.
 
 ## 📋 Sumario
 
-- [🌍 URL base](#-url-base)
-- [📦 Principales funcionalidades](#-principales-funcionalidades)
-- [🛠️ Configuración del proyecto](#️-configuración-del-proyecto)
-- [📁 Ejemplo `.env`](#-ejemplo-env)
-- [🔗 Endpoints](#-endpoints)
-- [💡 Ejemplos de uso](#-ejemplos-de-uso)
-- [🗺️ Diagrama de flujo API RESTful](#-diagrama-de-flujo-api-restful)
-- [✨👩‍💻 Integrantes del grupo](#-integrantes-del-grupo)
+- [🌐 Desarrollo de API RESTful utilizando MongoDB](#-desarrollo-de-api-restful-utilizando-mongodb)
+  - [📋 Sumario](#-sumario)
+  - [🌍 URL base](#-url-base)
+  - [📦 Principales funcionalidades](#-principales-funcionalidades)
+  - [🛠️ Configuración del proyecto](#️-configuración-del-proyecto)
+  - [📁 Ejemplo `.env`](#-ejemplo-env)
+  - [🔗 Endpoints](#-endpoints)
+  - [💡 Ejemplos de uso](#-ejemplos-de-uso)
+    - [🔍 GET `/productos`](#-get-productos)
+    - [➕ POST `/productos`](#-post-productos)
+    - [📝 PUT `/productos/:codigo`](#-put-productoscodigo)
+    - [🗑️ DELETE `/productos/:id`](#️-delete-productosid)
+  - [🗺️ Diagrama de flujo API RESTful](#️-diagrama-de-flujo-api-restful)
+  - [✨👩‍💻 Integrantes del grupo](#-integrantes-del-grupo)
 
 ---
 
 ## 🌍 URL base
 
 La URL base para hacer las peticiones a la API es:
+
 ```
 http://localhost:3006
 ```
@@ -65,8 +72,9 @@ MONGODB_URLSTRING=mongodb+srv://jobsemarr:supermercado@supermercado.e2pucdi.mong
 ## 🔗 Endpoints
 
 | Método | Ruta               | Descripción                      |
-| ------ | ------------------ | ------------------------------   |
+| ------ | ------------------ | -------------------------------- |
 | GET    | /productos         | Lista todos los productos        |
+| GET    | /productos/:nombre | Busca producto por nombre        |
 | POST   | /productos         | Agrega un nuevo producto         |
 | PUT    | /productos/:codigo | Actualiza un producto por código |
 | DELETE | /productos/:id     | Elimina un producto por id       |
@@ -78,6 +86,7 @@ MONGODB_URLSTRING=mongodb+srv://jobsemarr:supermercado@supermercado.e2pucdi.mong
 ### 🔍 GET `/productos`
 
 **Request:**
+
 ```
 GET http://localhost:3006/productos
 ```
@@ -85,7 +94,34 @@ GET http://localhost:3006/productos
 **Parámetros**: No requiere.
 
 **Respuesta:**
+
 - `200 OK`: Lista de productos.
+- `500 Internal Server Error`: Error al conectarse a la base de datos.
+
+```json
+[
+  {
+    "_id": "684217f5a9bd0848b715f400",
+    "codigo": 2456,
+    "nombre": "Café",
+    "precio": 9.99,
+    "categoria": "Infusiones"
+  },
+  ...
+]
+```
+
+---
+
+```
+GET http://localhost:3006/productos/:nombre
+```
+
+**Parámetros**: `nombre` (Nombre) — nombre del producto buscado.
+
+**Respuesta:**
+
+- `200 OK`: Búsqueda exitosa.
 - `500 Internal Server Error`: Error al conectarse a la base de datos.
 
 ```json
@@ -106,6 +142,7 @@ GET http://localhost:3006/productos
 ### ➕ POST `/productos`
 
 **Request:**
+
 ```
 POST http://localhost:3006/productos
 ```
@@ -114,12 +151,12 @@ POST http://localhost:3006/productos
 
 **Body (JSON) obligatorio:**
 
-| Campo      | Tipo     | Descripción                   | Requerido |
-|------------|----------|-------------------------------|-----------|
-| `codigo`   | Número   | Código del producto           | Sí        |
-| `nombre`   | String   | Nombre del producto           | Sí        |
-| `precio`   | Número   | Precio unitario               | Sí        |
-| `categoria`| String   | Categoría del producto        | Sí        |
+| Campo       | Tipo   | Descripción            | Requerido |
+| ----------- | ------ | ---------------------- | --------- |
+| `codigo`    | Número | Código del producto    | Sí        |
+| `nombre`    | String | Nombre del producto    | Sí        |
+| `precio`    | Número | Precio unitario        | Sí        |
+| `categoria` | String | Categoría del producto | Sí        |
 
 ```json
 {
@@ -131,6 +168,7 @@ POST http://localhost:3006/productos
 ```
 
 **Respuesta:**
+
 - `201 Created`: Producto creado exitosamente.
 - `400 Bad Request`: Datos inválidos o incompletos.
 - `500 Internal Server Error`: Error al guardar el producto.
@@ -150,6 +188,7 @@ POST http://localhost:3006/productos
 ### 📝 PUT `/productos/:codigo`
 
 **Request:**
+
 ```
 PUT http://localhost:3006/productos/1234
 ```
@@ -159,21 +198,22 @@ Nota: el codigo no puede ser modificado mediante esta ruta.
 
 **Body (JSON):** campos a actualizar (al menos uno).
 
-| Campo      | Tipo     | Descripción                   | Requerido |
-|------------|----------|-------------------------------|-----------|
-| `nombre`   | String   | Nuevo nombre del producto     | No        |
-| `precio`   | Número   | Nuevo precio                  | No        |
-| `categoria`| String   | Nueva categoría               | No        |
+| Campo       | Tipo   | Descripción               | Requerido |
+| ----------- | ------ | ------------------------- | --------- |
+| `nombre`    | String | Nuevo nombre del producto | No        |
+| `precio`    | Número | Nuevo precio              | No        |
+| `categoria` | String | Nueva categoría           | No        |
 
 ```json
 {
   "nombre": "Arroz Integral",
-  "precio": 6.50,
+  "precio": 6.5,
   "categoria": "Comestible"
 }
 ```
 
 **Respuesta:**
+
 - `200 OK`: Producto actualizado correctamente.
 - `400 Bad Request`: Código mal formado o datos inválidos.
 - `404 Not Found`: Producto con ese código no encontrado.
@@ -184,7 +224,7 @@ Nota: el codigo no puede ser modificado mediante esta ruta.
   "_id": "684217f5a9bd0848b715f3fd",
   "codigo": 1234,
   "nombre": "Arroz Integral",
-  "precio": 6.50,
+  "precio": 6.5,
   "categoria": "Comestible"
 }
 ```
@@ -194,6 +234,7 @@ Nota: el codigo no puede ser modificado mediante esta ruta.
 ### 🗑️ DELETE `/productos/:id`
 
 **Request:**
+
 ```
 DELETE http://localhost:3006/productos/684217f5a9bd0848b715f402
 ```
@@ -201,6 +242,7 @@ DELETE http://localhost:3006/productos/684217f5a9bd0848b715f402
 **Parámetros**: `id` (string) — _ObjectId_ de MongoDB del producto a eliminar.
 
 **Respuesta:**
+
 - `204 No Content`: Producto eliminado exitosamente.
 - `400 Bad Request`: ID inválido o mal formateado.
 - `404 Not Found`: No se encontró el producto con ese ID.
