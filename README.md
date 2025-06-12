@@ -113,6 +113,10 @@ GET http://localhost:3006/productos
 
 ---
 
+### 🔍 GET `/productos/:nombre`
+
+**Request:**
+
 ```
 GET http://localhost:3006/productos/:nombre
 ```
