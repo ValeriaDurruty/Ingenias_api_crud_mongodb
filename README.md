@@ -16,6 +16,7 @@ Desarrollado con **Express.js** y **MongoDB**.
   - [🔗 Endpoints](#-endpoints)
   - [💡 Ejemplos de uso](#-ejemplos-de-uso)
     - [🔍 GET `/productos`](#-get-productos)
+    - [🔍 GET `/productos/:nombre`](#-get-productos-nombre)
     - [➕ POST `/productos`](#-post-productos)
     - [📝 PUT `/productos/:codigo`](#-put-productoscodigo)
     - [🗑️ DELETE `/productos/:id`](#️-delete-productosid)
